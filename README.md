@@ -10,5 +10,4 @@ https://github.com/webpro/awesome-dotfiles \
 https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html \
 https://joshstaiger.org/archives/2005/07/bash_profile_vs.html
 
-Todos:
-Go back and enable stats setting in .inputrc to see what it does
+TODO: Add description of directory and intended organization
