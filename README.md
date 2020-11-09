@@ -3,11 +3,12 @@ Got my start from the Lars Kappert article: [Getting Started With Dotfiles](http
 
 This directory should be placed in the user's home directory.
 
-Articles to go back to:
-https://thoughtbot.com/blog/my-life-with-neovim
-https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789
-https://github.com/webpro/awesome-dotfiles
-https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html
+Articles to go back to: \
+https://thoughtbot.com/blog/my-life-with-neovim \
+https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789 \
+https://github.com/webpro/awesome-dotfiles \
+https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html \
+https://joshstaiger.org/archives/2005/07/bash_profile_vs.html
 
 Todos:
 Go back and enable stats setting in .inputrc to see what it does
