@@ -8,8 +8,21 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'itchyny/lightline.vim'
-" Plug 'airblade/vim-gitgutter' " Not working for some reason
 Plug 'preservim/tagbar'
+Plug 'tpope/vim-commentary'
+Plug 'dense-analysis/ale'
+Plug 'tpope/vim-fugitive'
+
+" Not working
+" Plug 'airblade/vim-gitgutter' " Not working for some reason
+
+" Wishlist
+" Plug 'ycm-core/YouCompleteMe'
+" Plug 'ervandew/supertab'
+" Plug 'junegunn/fzf.vim'
+" Plug 'raimondi/delimitmate'
+" Plug 'junegunn/vim-easy-align'
+" 'janko-m/vim-test'
 call plug#end()
 
 " Turn on syntax highlighting
