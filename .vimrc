@@ -1,24 +1,28 @@
-" Don't try to be vi compatible
-set nocompatible
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Helps force plugins to load correctly when it is turned back on below
-filetype off
-
-" TODO: Load plugins here (pathogen or vundle)
+" TODO add the comment thing
+call plug#begin('~/.vim/plugged')
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'itchyny/lightline.vim'
+" Plug 'airblade/vim-gitgutter' " Not working for some reason
+Plug 'preservim/tagbar'
+call plug#end()
 
 " Turn on syntax highlighting
 syntax on
 
-" For plugins to load correctly
-filetype plugin indent on
-
-" TODO: Pick a leader key
-
-" Security
-set modelines=0
-
 " Show line numbers
-set number
+:set number
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
 
 " Show file stats
 set ruler
@@ -33,11 +37,7 @@ set encoding=utf-8
 set wrap
 set textwidth=79
 set formatoptions=tcqrn1
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
 set expandtab
-set noshiftround
 
 " Cursor motion
 set scrolloff=3
@@ -47,8 +47,14 @@ set backspace=indent,eol,start
 nnoremap j gj
 nnoremap k gk
 
-" Allow hidden buffers
-set hidden
+" Remap jj to exit insert mode
+inoremap jj <Esc>:w<CR>
+
+" Disable arrow keys in insert mode
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 " Rendering
 set ttyfast
@@ -60,38 +66,11 @@ set laststatus=2
 set showmode
 set showcmd
 
-" Searching
-nnoremap / /\v
-vnoremap / /\v
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-set showmatch
-" map <leader><space> :let @/=''<cr> " clear search
+" Color Scheme
+set termguicolors
+let g:material_theme_style = 'default'
+let g:airline_theme = 'material'
+colorscheme material
 
-" Remap help key.
-" inoremap <F1> <ESC>:set invfullscreen<CR>a
-" nnoremap <F1> :set invfullscreen<CR>
-" vnoremap <F1> :set invfullscreen<CR>
-
-" Textmate holdouts
-
-" Formatting
-" map <leader>q gqip
-
-" Visualize tabs and newlines
-" set listchars=tab:▸\ ,eol:¬
-" Uncomment this to enable by default:
-" set list " To enable by default
-" Or use your leader key + l to toggle on/off
-" map <leader>l :set list!<CR> " Toggle tabs and EOL
-
-" Color scheme (terminal)
-" set t_Co=256
-" set background=dark
-" let g:solarized_termcolors=256
-" let g:solarized_termtrans=1
-" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-" in ~/.vim/colors/ and uncomment:
-" colorscheme solarized
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
