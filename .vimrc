@@ -7,6 +7,7 @@ endif
 " TODO add the comment thing
 call plug#begin('~/.vim/plugged')
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'preservim/tagbar'
 Plug 'tpope/vim-commentary'
@@ -81,9 +82,16 @@ set showcmd
 
 " Color Scheme
 set termguicolors
-let g:material_theme_style = 'default'
-let g:airline_theme = 'material'
-colorscheme material
+if strftime("%H") > 6 && strftime("%H") < 18
+  autocmd vimenter * ++nested colorscheme gruvbox
+  let g:gruvbox_contrast_light = 'medium'
+  set background=light
+else
+  let g:material_theme_style = 'ocean'
+  let g:airline_theme = 'material'
+  colorscheme material
+  set background=dark
+endif
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
