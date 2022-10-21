@@ -13,6 +13,7 @@ Plug 'preservim/tagbar'
 Plug 'tpope/vim-commentary'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " Not working
 " Plug 'airblade/vim-gitgutter' " Not working for some reason
@@ -82,8 +83,8 @@ set showcmd
 
 " Color Scheme
 set termguicolors
-if strftime("%H") > 6 && strftime("%H") < 18
-  autocmd vimenter * ++nested colorscheme gruvbox
+if 15 < strftime("%H") || strftime("%H") < 4
+  autocmd vimenter * nested colorscheme gruvbox
   let g:gruvbox_contrast_light = 'medium'
   set background=light
 else
